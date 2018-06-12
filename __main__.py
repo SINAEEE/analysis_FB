@@ -1,6 +1,34 @@
 
-from analysis_FB.collect import crawler as cw
+import collect
+import analyze
+import visualize
 
-cw.crawling("jtbcnews","2017-01-01","2017-12-31")
+#from collect import crawler as cw
 
-print('RUN analysis_FB..')
+
+if __name__ == '__main__':
+
+    items = [
+        {'pagename':'jtbcnews','since':'2017-01-01','until':'2017-12-31'},
+        {'pagename': 'chosun', 'since':'2017-01-01', 'until':'2017-12-31'}
+    ]
+
+
+    # 데이터 수집(collection)
+    for item in items:
+        collect.crawling(**item)
+
+    """
+    collect.crawling("jtbcnews",
+                "2017-01-01",
+                "2017-12-31")
+    """
+
+    #데이터 분석(analysis)
+    #데이터 시각화 (visualization)
+
+
+
+#cw.crawling("jtbcnews","2017-01-01","2017-12-31")
+
+#print('RUN analysis_FB..')
