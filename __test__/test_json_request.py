@@ -20,13 +20,13 @@ wr.json_request(url=url, error=error_fetch_user_list)
 """
 
 
-"""
+
 # 2 방식
 def sucess_fetch_userlist(response):
     print(response)
     
 wr.json_request(url=url, success=sucess_fetch_userlist)
-"""
+
 
 
 

@@ -4,7 +4,7 @@
 from urllib.parse import urlencode
 from .web_request import json_request
 
-ACCESS_TOKEN="EAACEdEose0cBAFMJ7ZCYIrfZA42DMn6pBzSecQae8K7gyG3QdN7qEhNmLcZAJtiK2CORG5PhzVeSoguPZCB45o60ZCPfPXwtrBHDTgoZBJ7LKcPhJDATZBxPfTyEMGW9sFwZAQ6a7I2U3vPRCmrZBnyKcGuZBTQgbU4VCco43ZCIQweHDW2XvdEz8IZBZCTQWv6i19vUZD"
+ACCESS_TOKEN="EAACEdEose0cBANg3Ey1lPFAykbvV2RgEQrYKZBWpBZACbva82fxH06EHrKsla8RHNakPUFsDyibx44mC4nuDJfHQAMPcZCDlB6reNiFHTuhedV411gP6cYw1tz1osr8mtezOHqllYCzBzHnZBKCDCrNJy1llGWc7JmeQTIYWdcYjOPGwfutAwLOVRie2R9UZD"
 BASE_URL_FB_API = "https://graph.facebook.com/v3.0"
 
 
@@ -32,8 +32,43 @@ def fb_fetch_posts(pagename, since, until):
         access_token = ACCESS_TOKEN)
 
     json_result = json_request(url=url)
-    print(json_result)
+    #print(json_result)
 
-    #print(url)
+    results = []
+    isnext = True
+    while isnext is True:
+        json_result = json_request(url=url)
+
+        paging = None if json_result is None else  json_result.get('paging')
+        posts = None if json_result is None else json_result.get('data')
+
+#        results = results + posts
+
+        url = None if paging is None else paging.get("next")
+        isnext = url is not None
+
+        yield posts
+
+#    return results
+
+
+"""
+    while isnext is True:
+        json_result = json_request(url=url)
+        paging = None
+        if json_result is None:
+            paging = None
+        else:
+            paging = json_result.get('paging')
+"""
+
+
+
+
+
+
+
+
+
 
 
