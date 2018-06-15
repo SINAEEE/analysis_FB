@@ -11,7 +11,7 @@
 
 2. pytagcloud 한글처리
     1) PYTHON 설치 디렉토리/lib/site-packages/pytagcloud/fonts
-       에 한글 폰트 복사, (malgun.ttf)
+       에 한글 폰트 복사, (malgun.ttf) (C:\Windows\Fonts)
     2) PYTHON 설치 디렉토리/lib/site-packages/pytagcloud/fonts/fonts.json 파일 수정
    	{
 		"name": "Malgun",
