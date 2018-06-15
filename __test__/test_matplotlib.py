@@ -3,6 +3,7 @@ import numpy as np
 from numpy.random import randn
 
 
+
 def ex1():
     #plt.plot([1,2,3,4],[10,20,30,40])
     plt.plot([10,20,30,40])
