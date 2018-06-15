@@ -30,20 +30,18 @@ def preprocess_post(post): #데이터전처리 : 공개할필요없는 함수
     post['created_time'] = kst.strftime('%Y-%m-%d %H:%M:%S:')
 
 
-
-def crawling(pagename, since, until,fetch=True):
+def crawling(pagename, since, until, fetch=True):
     results = []
-    filename = '%s_%s_%s_%s.json' % (RESULT_DIRECTORY,pagename,since,until)
+    filename = '%s_%s_%s_%s.json' % (RESULT_DIRECTORY, pagename, since, until)
 
     if fetch:
-        for posts in api.fb_fetch_posts(pagename, since, until):
-            for post in posts: #개별전처리(50개씩받아서 하나씩)
+        for posts in api.fb_fetch_posts(pagename,since,until):
+            for post in posts:
                 preprocess_post(post)
-
             results += posts
 
-        #save results to file(저장/적재)
-        #outfile = open(filename, 'w', encoding='utf-8')
+            #save results to file(저장/적재)
+            #outfile = open(filename, 'w',encoding='utf-8')
         with open(filename, 'w', encoding='utf-8') as outfile:
             json_string = json.dumps(results, indent=4, sort_keys=True, ensure_ascii=False)
             outfile.write(json_string)

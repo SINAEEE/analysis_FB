@@ -6,7 +6,7 @@ from datetime import *
 import json
 
 try:
-    url = 'http://kickscar.cafe24.com:8080/myapp-api/api/user/list'
+    url = 'https://graph.facebook.com/v3.0/jtbcnews/'
     #->json lib을 사용하여 이 String을 파이썬객체로 변경해주자
 
     request = Request(url)
