@@ -1,5 +1,7 @@
 import json
 import re  #정규표현식, 어떤 string을 표현한 식(regular expression)
+from konlpy.tag import Twitter
+from collections import Counter
 
 
 def json_to_str (filename, key):
@@ -22,4 +24,17 @@ def json_to_str (filename, key):
         data += re.sub(r'[^\w]','',value) #sub:대체하라, r:정규표현식, value에서 공백문자가 발생되면 제거하기
 
     return data
+
+
+def count_wordfreq(data):
+    twitter = Twitter()
+    nouns = twitter.nouns(data)
+    print(nouns)
+
+    count = Counter(nouns)
+    return count
+
+
+
+
 
