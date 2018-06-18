@@ -3,13 +3,14 @@
 
 from urllib.parse import urlencode
 from .web_request import json_request
+#from config import CONFIG
 
 ACCESS_TOKEN="EAACEdEose0cBAAtvdxF9HF9N8Vl8lMQV8ewcOZBtM2hILiTZB5ITVgxApJaKwQ4WcmzRDGd3CMcqloF9waeeLq2AfEa0P2bKskmPasys1bazKjjAPy9COGFGgM6MiOGHg7ZBAyZConFiItN2UWcoYZAfMaB4faysT9cEuyLIC6QyrtvL99eTvUub7P0zGyOIZD"
 BASE_URL_FB_API = "https://graph.facebook.com/v3.0"
 
 
 def fb_gen_url(
-       base = BASE_URL_FB_API,
+       base=BASE_URL_FB_API,
        node ='',
        **params):
     url = '%s/%s/?%s' % (base, node, urlencode(params))
@@ -29,7 +30,7 @@ def fb_fetch_posts(pagename, since, until): #매개변수예시 : "jtbcnews",'20
         since = since,
         until = until,
         limit = 50,
-        access_token = ACCESS_TOKEN)
+        access_token=ACCESS_TOKEN)
 
     json_result = json_request(url=url)
     #print(json_result)

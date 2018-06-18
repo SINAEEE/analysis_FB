@@ -35,6 +35,8 @@ def graph_bar(title=None,
          subplots.set_xticks(range(len(ticks)))
          subplots.set_xticklabels(ticks, rotation=80, fontsize='xx-small')
 
+     # show grid
+     subplots.grid(showgrid)
 
      # title
      if title is not None and isinstance(title, str):
@@ -48,9 +50,6 @@ def graph_bar(title=None,
      if ylabel is not None and isinstance(ylabel, str):
          subplots.set_ylabel(ylabel)
 
-
-     # show grid
-     subplots.grid(showgrid)
 
      if filename is not None and isinstance(filename, str):
          save_filename = '%s/bar_%s.png' % (RESULT_DIRECTORY,filename)

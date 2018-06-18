@@ -2,20 +2,25 @@
 import collect
 import analyze
 import visualize
+from config import CONFIG
 
 #from collect import crawler as cw
 
 
 if __name__ == '__main__':
 
+    """
     items = [
         {'pagename':'jtbcnews','since':'2017-01-01','until':'2017-12-31'},
         {'pagename': 'chosun', 'since':'2017-01-01', 'until':'2017-12-31'}
     ]
+    """
 
 
     # 데이터 수집(collection)
-    for item in items:
+
+
+    for item in CONFIG['items']:
         resultfile = collect.crawling(**item, fetch=False)
         #print(resultfile)
         item['resultfile'] = resultfile
@@ -29,11 +34,13 @@ if __name__ == '__main__':
 
 
     #데이터 분석(analysis)
+    """
     for item in items:
         #print(item)
         data = analyze.json_to_str(item['resultfile'],'message')
         item['count_wordfreq'] = analyze.count_wordfreq(data)   #각 단어에 대한 갯수
         #print(item['count_wordfreq'])
+    """
 
     """
         for item in items:
@@ -41,6 +48,7 @@ if __name__ == '__main__':
     """
 
     #데이터 시각화 (visualization)
+    """
     for item in items:
         count = item['count_wordfreq']
         count_m50 = dict(count.most_common(50))
@@ -60,7 +68,7 @@ if __name__ == '__main__':
             showgraph=False
         )
         #print(count_m50)
-
+        """
 
 
 #cw.crawling("jtbcnews","2017-01-01","2017-12-31")
